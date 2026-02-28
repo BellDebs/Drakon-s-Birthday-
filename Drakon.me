@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>System Interface</title>
+
+<style>
+
+body{
+background:radial-gradient(circle,#050505,#000000);
+color:#00ffe1;
+font-family:Consolas,monospace;
+text-align:center;
+padding:20px;
+}
+
+/* SYSTEM TEXT */
+.system{
+font-size:28px;
+font-weight:bold;
+letter-spacing:3px;
+animation:blink 1s infinite;
+margin-top:40px;
+}
+
+@keyframes blink{
+50%{opacity:0.3;}
+}
+
+.panel{
+display:none;
+margin-top:30px;
+padding:20px;
+border:2px solid #00ffe1;
+border-radius:10px;
+box-shadow:0 0 20px #00ffe1;
+background:#000;
+}
+
+input{
+padding:10px;
+margin-top:10px;
+background:black;
+color:#00ffe1;
+border:1px solid #00ffe1;
+}
+
+button{
+margin-top:15px;
+padding:10px 20px;
+background:#00ffe1;
+border:none;
+font-weight:bold;
+cursor:pointer;
+}
+
+.reward{
+text-align:left;
+margin:auto;
+width:260px;
+line-height:2;
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="boot" class="system">
+⚡ SYSTEM INITIALIZING...
+</div>
+
+<div id="names" class="panel">
+<h2>Host Detected</h2>
+<p>Emmanuel</p>
+<p>Sunbola</p>
+<p>Praise</p>
+
+<p><b>Enter Password</b></p>
+
+<input id="password" type="password">
+<br>
+<button onclick="checkPassword()">Access System</button>
+
+<p id="error"></p>
+</div>
+
+
+<div id="greeting" class="panel">
+
+<h2>🎉 SYSTEM MESSAGE 🎉</h2>
+
+<p>
+May your life be filled with<br><br>
+✨ Joy<br>
+✨ Success<br>
+✨ Happiness<br>
+✨ Wealth<br>
+✨ Strength<br><br>
+
+Happy Birthday, Champion.
+</p>
+
+<button onclick="showReward()">ACCEPT REWARD</button>
+
+</div>
+
+
+<div id="secret" class="panel">
+
+<h3>Enter Secret Code</h3>
+
+<p>Hint: (D)</p>
+
+<input id="code">
+<br>
+
+<button onclick="unlockReward()">Unlock</button>
+
+</div>
+
+
+<div id="finalReward" class="panel">
+
+<h2>✅ REWARD ACCEPTED</h2>
+
+<div class="reward">
+Name: <b>Drakon</b><br>
+Race: Human<br><br>
+
+Perks Added:<br>
+
+💰 Wealth +100<br>
+❤️ Health +100<br>
+😊 Happiness +100
+</div>
+
+<br>
+
+<button onclick="playMusic()">Play Celebration Music</button>
+
+</div>
+
+
+<!-- MUSIC -->
+<iframe id="music"
+width="0"
+height="0"
+src=""
+allow="autoplay">
+</iframe>
+
+
+<script>
+
+/* SYSTEM BOOT */
+setTimeout(()=>{
+document.getElementById("boot").style.display="none";
+document.getElementById("names").style.display="block";
+},2500);
+
+
+/* PASSWORD */
+function checkPassword(){
+
+let pass=document.getElementById("password").value;
+
+if(pass==="Drakon"){
+document.getElementById("names").style.display="none";
+document.getElementById("greeting").style.display="block";
+}
+else{
+document.getElementById("error").innerText="ACCESS DENIED";
+}
+}
+
+
+/* SHOW SECRET */
+function showReward(){
+document.getElementById("greeting").style.display="none";
+document.getElementById("secret").style.display="block";
+}
+
+
+/* UNLOCK REWARD */
+function unlockReward(){
+
+let code=document.getElementById("code").value;
+
+if(code==="D"){
+document.getElementById("secret").style.display="none";
+document.getElementById("finalReward").style.display="block";
+}
+else{
+alert("Wrong Code");
+}
+}
+
+
+/* MUSIC */
+function playMusic(){
+document.getElementById("music").src=
+"https://www.youtube.com/embed/WcIcVapfqXw?autoplay=1";
+}
+
+</script>
+
+</body>
+</html>
